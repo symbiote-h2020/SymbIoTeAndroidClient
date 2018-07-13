@@ -1,6 +1,7 @@
 package at.ac.ait.sac;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,11 +18,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import at.ac.ait.sac.settings.Settings;
+import at.ac.ait.sac.settings.SettingsActivity;
+
 public class SymbIoTeClientActivity extends AppCompatActivity {
 
     private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(SymbIoTeClientActivity.class);
-    public static final String PLATFORM_ID = "ait_kiola";
-    //public static final String PLATFORM_ID = "smart-stadium-dev";
 
     private SymbIoTeCoreSensorQueryTask.QueryTaskCallback mSymbIoTeQueryCallback = new SymbIoTeCoreSensorQueryTask.QueryTaskCallback() {
         @Override
@@ -85,7 +87,7 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
                 Snackbar.make(view, getString(R.string.snack_query_started), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 mCoreQueryTask = new SymbIoTeCoreSensorQueryTask(SymbIoTeClientActivity.this, mSymbIoTeQueryCallback);
-                mCoreQueryTask.execute(PLATFORM_ID);
+                mCoreQueryTask.execute(Settings.getPlatformId(SymbIoTeClientActivity.this));
             }
         });
     }
@@ -106,6 +108,8 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent startSettings = new Intent(this, SettingsActivity.class);
+            startActivity(startSettings);
             return true;
         }
         return super.onOptionsItemSelected(item);

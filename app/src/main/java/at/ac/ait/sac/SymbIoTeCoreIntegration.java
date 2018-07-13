@@ -18,6 +18,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.util.Map;
 
+import at.ac.ait.sac.settings.Settings;
 import eu.h2020.symbiote.security.ClientSecurityHandlerFactory;
 import eu.h2020.symbiote.security.commons.exceptions.custom.AAMException;
 import eu.h2020.symbiote.security.commons.exceptions.custom.JWTCreationException;
@@ -54,7 +55,7 @@ public class SymbIoTeCoreIntegration {
     private final String mCoreAamUrl;
 
     public SymbIoTeCoreIntegration(@NonNull Context ctx){
-        mCoreAamUrl = SymbIoTeConstants.CORE_AAM_SERVER_URL_DEFAULT;
+        mCoreAamUrl = Settings.getCoreAAm(ctx);//SymbIoTeConstants.CORE_AAM_SERVER_URL_DEFAULT;
         mAamClient = new AAMClient(mCoreAamUrl);
         mClient = NetworkUtil.createClient();
         File keystore = new File(ctx.getApplicationContext().getFilesDir(),KEYSTORE_NAME);

@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="p_header_parameter">Query parameter</string>
     <string name="p_core_aam_title">SymbIoTe Core</string>
-    <string name="p_core_aam_summary">We are using SymbIoTe core %s</string>
+    <string name="p_core_aam_summary">We are using SymbIoTe core \'%s\'</string>
     <string name="p_platform_id_title">Platform ID</string>
-    <string name="p_platform_id_summary">We are using %s as our platform id when searching for sensors</string>
+    <string name="p_platform_id_summary">We are using \'%s\' as our platform id when searching for sensors</string>
 </resources>
