@@ -23,8 +23,8 @@ import java.util.List;
 public class SymbIoTeClientActivity extends AppCompatActivity {
 
     private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(SymbIoTeClientActivity.class);
-    //public static final String PLATFORM_ID = "ait_kiola";
-    public static final String PLATFORM_ID = "smart-stadium-dev";
+    public static final String PLATFORM_ID = "ait_kiola";
+    //public static final String PLATFORM_ID = "smart-stadium-dev";
 
     private SymbIoTeCoreSensorQueryTask.QueryTaskCallback mSymbIoTeQueryCallback = new SymbIoTeCoreSensorQueryTask.QueryTaskCallback() {
         @Override
@@ -57,7 +57,6 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
 
 
     private SymbIoTeCoreSensorQueryTask mCoreQueryTask;
-    private ListView mListView;
     private List<Sensor> mSensors = new ArrayList<>();
     private ArrayAdapter<Sensor> mAdapter;
 
@@ -66,15 +65,10 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symb_io_te_client);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        mListView = findViewById(R.id.listView);
-        ProgressBar progressBar = new ProgressBar(this);
-        progressBar.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-        progressBar.setIndeterminate(true);
-        mListView.setEmptyView(progressBar);
+        ListView listView = findViewById(R.id.listView);
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, mSensors);
-        mListView.setAdapter(mAdapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setAdapter(mAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Sensor clicked = (Sensor) adapterView.getAdapter().getItem(i);
