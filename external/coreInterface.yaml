@@ -1,0 +1,301 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Core Interface
+schemes:
+  - http
+host: symbiote.man.poznan.pl
+basePath: /coreInterface/v1
+
+paths:
+  /query:
+    get:
+      summary: Search for resources using query parameters
+      parameters:
+        - name: platform_id
+          in: query
+          required: false
+          type: string
+          description: ID of a platform
+        - name: platform_name
+          in: query
+          required: false
+          type: string
+          description: name of a platform
+        - name: owner
+          in: query
+          required: false
+          type: string
+          description: owner of a platform
+        - name: name
+          in: query
+          required: false
+          type: string
+          description: name of a resource
+        - name: id
+          in: query
+          required: false
+          type: string
+          description: ID of a resource
+        - name: description
+          in: query
+          required: false
+          type: string
+          description: description of a resource
+        - name: location_name
+          in: query
+          required: false
+          type: string
+          description: name of a location
+        - name: location_lat
+          in: query
+          required: false
+          type: number
+          format: double
+          description: latitude of a location
+        - name: location_long
+          in: query
+          required: false
+          type: number
+          format: double
+          description: longitude of a location
+        - name: max_distance
+          in: query
+          required: false
+          type: integer
+          description: maximum radius from specified latitude and longitude to look for resources
+        - name: observed_property
+          in: query
+          required: false
+          type: string
+          description: observed property; can be passed multiple times (acts as AND)
+        - name: resource_type
+          in: query
+          required: false
+          type: string
+          description: type of a resource
+        - name: X-Auth-Token
+          in: header
+          required: true
+          type: string
+          description: security token
+      responses:
+        '200':
+          description: Query executed successfully
+          schema:
+            $ref: '#/definitions/QueryResponse'
+        '500':
+          description: Query execution error on server side
+          
+  /sparqlQuery:
+    post:
+      summary: Search for resources using SPARQL query
+      parameters:
+        - name: sparqlQuery
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SparqlQueryRequest'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          type: string
+          description: security token
+      responses:
+        '200':
+          description: Query executed successfully
+          schema:
+            properties:
+              rdf:
+                type: string
+        '500':
+          description: Query execution error on server side
+          
+  /resourceUrls:
+    get:
+      summary: Gets URLs of resource specified by passed IDs
+      parameters:
+        - name: id
+          in: query
+          required: true
+          type: string
+          description: can be passed multiple times to serve multiple resources
+        - name: X-Auth-Token
+          in: header
+          required: true
+          type: string
+          description: security token
+      responses:
+        '200':
+          description: Request served succesfully
+          schema:
+            description: Map containing "id" - "URL" pairs
+            properties:
+              id:
+                type: string
+        '500':
+          description: Error on server side
+          
+  /login:
+    post:
+      summary: Login to symbIoTe core and obtain access token
+      parameters:
+        - name: credentials
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Credentials'
+      responses:
+        '200':
+          description: Login successful
+          headers:
+            X-Auth-Token:
+              description: newly obtained, valid token
+              type: string
+        '400':
+          description: Username and/or password not supplied
+        '401':
+          description: Wrong username and/or password
+          
+  /get_ca_cert:
+    get:
+      summary: Get CA certificate
+      responses:
+        '200':
+          description: Request served successfully
+          schema:
+            description: CA certificate
+            type: string
+        '500':
+          description: Error on server side
+          
+  /request_foreign_token:
+    post:
+      summary: Get CA certificate
+      parameters:
+        - name: X-Auth-Token
+          in: header
+          required: true
+          type: string
+          description: security token
+      responses:
+        '200':
+          description: Request served successfully
+          headers:
+            X-Auth-Token:
+              description: requested foreign token
+              type: string
+        '400':
+          description: Request is not complete or not valid
+        '500':
+          description: Error on server side
+          
+  /check_home_token_revocation:
+    post:
+      summary: Check home token revocation
+      parameters:
+        - name: X-Auth-Token
+          in: header
+          required: true
+          type: string
+          description: security token
+      responses:
+        '200':
+          description: Request served successfully
+          schema:
+            $ref: '#/definitions/CheckRevocationResponse'
+        '500':
+          description: Error on server side
+          
+  /get_available_aams:
+    get:
+      summary: Get list of available AAM instances
+      responses:
+        '200':
+          description: Request served successfully
+          schema:
+            $ref: '#/definitions/AAMList'
+        '500':
+          description: Error on server side
+          
+definitions:
+  QueryResourceResult:
+    properties:
+      platformId:
+        type: string
+      platformName:
+        type: string
+      owner:
+        type: string
+      name:
+        type: string
+      id:
+        type: string
+      description:
+        type: string
+      locationName:
+        type: string
+      locationLatitude:
+        type: number
+        format: double
+      locationLongitude:
+        type: number
+        format: double
+      locationAltitude:
+        type: number
+        format: double
+      observedProperties:
+        type: array
+        items:
+          type: string
+          
+  QueryResponse:
+    properties:
+      resources:
+        type: array
+        items:
+          $ref: '#/definitions/QueryResourceResult'
+          
+  SparqlQueryRequest:
+    properties:
+      sparqlQuery:
+        type: string
+      outputFormat:
+        type: string
+        enum: [ SRX, XML, JSON, SRJ, SRT, THRIFT, SSE, CSV, TSV, SRB, TEXT, COUNT, TUPLES, NONE, RDF, RDF_N3, RDF_XML, N3, TTL, TURTLE, GRAPH, NT, N_TRIPLES, TRIG ]
+  
+  Credentials:
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+        
+  CheckRevocationResponse:
+    properties:
+      status:
+        type: string
+        enum: [ VALID, VALID_OFFLINE, EXPIRED, REVOKED, INVALID, NULL]
+        
+  Certificate:
+    properties:
+      certificateString:
+        type: string
+        
+  AAM:
+    properties:
+      aamInstanceId:
+        type: string
+      aamAddress:
+        type: string
+      aamInstanceFriendlyName:
+        type: string
+      certificate:
+        $ref: '#/definitions/Certificate'
+        
+  AAMList:
+    type: array
+    items:
+      $ref: '#/definitions/AAM'
+  
+
