@@ -7,8 +7,10 @@
             android:key="P_CORE_AAM"
             android:selectAllOnFocus="true"
             android:singleLine="true"
+            android:persistent="true"
             android:title="@string/p_core_aam_title"/>
         <EditTextPreference
+            android:persistent="true"
             android:defaultValue="ait_kiola"
             android:inputType="textNoSuggestions"
             android:key="P_PLATFORM_ID"

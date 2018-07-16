@@ -24,7 +24,7 @@ public class SettingsFragment extends PreferenceFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LOG.debug("onCreate: SettingsFragment");
-        addPreferencesFromResource(R.xml.prferences);
+        addPreferencesFromResource(R.xml.preferences);
         bindPreferenceSummaryToValue(findPreference(SettingsConstants.P_CORE_AAM));
         bindPreferenceSummaryToValue(findPreference(SettingsConstants.P_PLATFORM_ID));
     }
