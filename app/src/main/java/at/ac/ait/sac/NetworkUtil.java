@@ -23,7 +23,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 public class NetworkUtil {
     private static final Logger LOG = LoggerFactory.getLogger(NetworkUtil.class);
 
-    private final static int HTTP_TIMEOUT_SECONDS = 30;
+    private final static int HTTP_TIMEOUT_SECONDS = 10;
     private static final HttpLoggingInterceptor.Level LOGGING_LEVEL = HttpLoggingInterceptor.Level.BODY; //BASIC; //BODY;
 
 

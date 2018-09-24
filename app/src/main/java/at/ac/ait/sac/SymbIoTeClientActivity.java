@@ -109,7 +109,7 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
     private void enableSensorListView(boolean enable) {
         mListView.setEnabled(enable);
         if (enable){
-            mListView.setAlpha(0f);
+            mListView.setAlpha(1f);
             mListView.setBackgroundColor(Color.WHITE);
         }else{
             mListView.setAlpha(0.75f);
