@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SymbIoTe Android Client</string>
-    <string name="intro">Start the core query by pressing the search button below.\n The list of registered sensors will be shown. By selecting one sensor, it will be queried through SymbIoTe.</string>
+    <string name="intro">Start the core query by pressing the search button below.\nThe list of registered sensors will be shown. By selecting one sensor, it will be queried through SymbIoTe.</string>
     <string name="snack_query_started">Started SymbIoTe core query - please stand by&#8230;</string>
     <string name="snack_reader_started">Started sensor reader - please stand by&#8230;</string>
     <string name="action_settings">Settings</string>

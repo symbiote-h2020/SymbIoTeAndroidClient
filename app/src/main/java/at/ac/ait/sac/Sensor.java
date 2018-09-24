@@ -53,7 +53,7 @@ public class Sensor {
 
     @Override
     public String toString() {
-        return "Sensor{("+id+","+name+")@"+platformId+"}";
+        return "Sensor '"+name+"' (id="+id+") @ "+platformId;
     }
 
     public static Collection<Sensor> createCollection(JSONArray jsonArray) throws JSONException {
