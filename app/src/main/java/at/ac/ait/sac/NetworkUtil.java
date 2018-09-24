@@ -1,7 +1,5 @@
 package at.ac.ait.sac;
 
-import android.webkit.MimeTypeMap;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +18,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 /**
  * Provides utility methods for communicating with a server.
  */
-public class NetworkUtil {
+class NetworkUtil {
     private static final Logger LOG = LoggerFactory.getLogger(NetworkUtil.class);
 
     private final static int HTTP_TIMEOUT_SECONDS = 10;
@@ -47,7 +45,7 @@ public class NetworkUtil {
     }
 
 
-    public final static class HttpHeaders {
+    final static class HttpHeaders {
         static final String ACCEPT = "Accept";
         static final String ACCEPT_LANGUAGE = "Accept-Language";
         public static final String CONTENT_TYPE = "Content-Type";
@@ -64,7 +62,7 @@ public class NetworkUtil {
         public final static String X_AUTH_TOKEN = "X-AUTH-Token";
 
 
-        public final static class Header {
+        final static class Header {
             private final String name;
             private final String value;
 
@@ -112,8 +110,8 @@ public class NetworkUtil {
         }
     }
 
-    public final static class ContentTypes {
-        public static final String JSON = "application/json";
+    final static class ContentTypes {
+        static final String JSON = "application/json";
     }
 
     private final static class ContentEncoding {

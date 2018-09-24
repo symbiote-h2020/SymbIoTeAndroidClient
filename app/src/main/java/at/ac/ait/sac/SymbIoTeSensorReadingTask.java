@@ -21,11 +21,12 @@ import okhttp3.Response;
 /**
  * A task querying the desired platform sensor by using symbIoTe (resolving the platform URL via
  * a CRAM request first).
+ * Execute the task by providing a sensorId (as returned by the symbIoTe core search).
  *
  * Created by EdeggerK on 11.09.2017.   ¯\_(ツ)_/¯
  */
 
-public class SymbIoTeSensorReadingTask extends AsyncTask<String,Void,String>{
+class SymbIoTeSensorReadingTask extends AsyncTask<String,Void,String>{
 
     private static final Logger LOG = LoggerFactory.getLogger(SymbIoTeSensorReadingTask.class);
     //query parameter for the ODATA filter (number of returned measurements)
@@ -35,7 +36,7 @@ public class SymbIoTeSensorReadingTask extends AsyncTask<String,Void,String>{
 
 
     public SymbIoTeSensorReadingTask(Context ctx, SensorReaderCallback callback) {
-        this.mCtx = new WeakReference<Context>(ctx);
+        this.mCtx = new WeakReference<>(ctx);
         this.mCallback = callback;
     }
 
@@ -60,7 +61,11 @@ public class SymbIoTeSensorReadingTask extends AsyncTask<String,Void,String>{
                 LOG.debug("Body: "+cramBody);
                 JSONObject jCram = new JSONObject(cramBody);
                 JSONObject raps = jCram.getJSONObject(SymbIoTeConstants.PARAM_BODY);
-                Uri rapUrl = Uri.parse(raps.getString(sensorId)).buildUpon().appendEncodedPath(SymbIoTeConstants.PATH_OBSERVATION).appendQueryParameter("$top", LIMIT_NUMBER_OBSERVATIONS).build();
+                Uri rapUrl = Uri.parse(raps.getString(sensorId)).buildUpon()
+                        .appendEncodedPath(SymbIoTeConstants.PATH_OBSERVATION)
+                        //we want to limit the length of the result list
+                        .appendQueryParameter("$top", LIMIT_NUMBER_OBSERVATIONS)
+                        .build();
                 LOG.debug("RAP {}", rapUrl.toString());
                 Request.Builder rapRequest = new Request.Builder().url(rapUrl.toString()).get();
                 symbiote.addSecurityHeaders(rapRequest);
@@ -104,6 +109,9 @@ public class SymbIoTeSensorReadingTask extends AsyncTask<String,Void,String>{
         }
     }
 
+    /**
+     * This interface will be called at the end of the task (either successfully or on an error)
+     */
     public interface SensorReaderCallback{
         void onSuccess(String responseBody);
         void onError(Exception e);

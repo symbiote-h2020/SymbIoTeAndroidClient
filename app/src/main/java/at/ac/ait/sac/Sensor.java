@@ -18,28 +18,28 @@ public class Sensor {
 
     private static final Logger LOG = LoggerFactory.getLogger(Sensor.class);
 
-    public final String platformId;
-    public final String platformName;
-    public final String name;
+    private final String platformId;
+    private final String platformName;
+    private final String name;
     public final String id;
-    public final String description;
-    public final String locationName;
-    public final Double latitude;
-    public final Double longitude;
+    private final String description;
+    private final String locationName;
+    private final Double latitude;
+    private final Double longitude;
 
 
     /**
      * ugly constructor for the sake of simplicity
-     * @param id
-     * @param name
-     * @param platformId
-     * @param platformName
-     * @param description
-     * @param locationName
-     * @param latitude
-     * @param longitude
+     * @param id the internal id of the sensor
+     * @param name the name of the sensor
+     * @param platformId the id of the platform the sensor is registered at
+     * @param platformName the name of the platform the sensor is registered at
+     * @param description a sensor may have a human readable description
+     * @param locationName the name of the location the sensor is registered at (i.e. 'Vienna')
+     * @param latitude the latitude part of the sensors location
+     * @param longitude the longitude part of the sensors location
      */
-    public Sensor(String id, String name, String platformId, String platformName, String description, String locationName, Double latitude, Double longitude) {
+    private Sensor(String id, String name, String platformId, String platformName, String description, String locationName, Double latitude, Double longitude) {
         LOG.debug("Creating sensor: {}",id);
         this.id = id;
         this.name = name;
@@ -92,46 +92,46 @@ public class Sensor {
         private Double latitude;
         private Double longitude;
 
-        public Sensor build() {
+        Sensor build() {
             return new Sensor(id, name, platformId, platformName, description, locationName, latitude, longitude);
         }
 
-        public Builder setPlatformId(String platformId) {
+        Builder setPlatformId(String platformId) {
             this.platformId = platformId;
             return this;
         }
         
-        public Builder setPlatformName(String platformName) {
+        Builder setPlatformName(String platformName) {
             this.platformName = platformName;
             return this;
         }
 
-        public Builder setName(String name) {
+        Builder setName(String name) {
             this.name=name;
             return this;
         }
 
-        public Builder setId(String id) {
+        Builder setId(String id) {
             this.id = id;
             return this;
         }
 
-        public Builder setDescription(String description) {
+        Builder setDescription(String description) {
             this.description = description;
             return this;
         }
 
-        public Builder setLocationName(String locationName) {
+        Builder setLocationName(String locationName) {
             this.locationName = locationName;
             return this;
         }
 
-        public Builder setLatitude(Double latitude) {
+        Builder setLatitude(Double latitude) {
             this.latitude = latitude;
             return this;
         }
 
-        public Builder setLongitude(Double longitude) {
+        Builder setLongitude(Double longitude) {
             this.longitude = longitude;
             return this;
         }

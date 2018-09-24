@@ -31,6 +31,7 @@ import eu.h2020.symbiote.security.helpers.MutualAuthenticationHelper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 /**
  *
@@ -40,7 +41,7 @@ import okhttp3.Response;
  * Created by EdeggerK on 07.02.2018.   ¯\_(ツ)_/¯
  */
 
-public class SymbIoTeCoreIntegration {
+class SymbIoTeCoreIntegration {
 
     private static final Logger LOG = LoggerFactory.getLogger(SymbIoTeCoreIntegration.class);
     private final OkHttpClient mClient;
@@ -87,30 +88,29 @@ public class SymbIoTeCoreIntegration {
         Request cram = cramRequest.build();
         LOG.debug("GET CRAM  {}",cram.url());
         Response cramResponse = null;
+        ResponseBody cramBody = null;
         try {
             cramResponse = mClient.newCall(cram).execute();
             LOG.debug("Response: {}",cramResponse);
             if (cramResponse.isSuccessful()) {
-                String cramBody = cramResponse.body().string();
-                LOG.debug("Body: " + cramBody);
-                JSONObject jCram = new JSONObject(cramBody);
-                JSONObject racps = jCram.getJSONObject(SymbIoTeConstants.PARAM_BODY);
-                rapUrl = Uri.parse(racps.getString(sensorId)).buildUpon().appendEncodedPath(SymbIoTeConstants.PATH_OBSERVATION).build();
-                LOG.debug("RAP {}", rapUrl.toString());
-
-//                Request.Builder racpRequest = new Request.Builder().url(rapUrl.toString()).get();
-//                addSecurityHeaders(racpRequest);
-//                Request racp = racpRequest.build();
-//                LOG.debug("GET request  {}", racp.url());
-
+                cramBody = cramResponse.body();
+                if (cramBody != null){
+                    LOG.debug("Body: " + cramBody);
+                    JSONObject jCram = new JSONObject(cramBody.string());
+                    JSONObject racps = jCram.getJSONObject(SymbIoTeConstants.PARAM_BODY);
+                    rapUrl = Uri.parse(racps.getString(sensorId)).buildUpon().appendEncodedPath(SymbIoTeConstants.PATH_OBSERVATION).build();
+                    LOG.debug("RAP {}", rapUrl.toString());
+                }
             }
         } catch (IOException | JSONException e) {
             throw new SymbIoTeException("Couldn't get RAP url for sensor '"+sensorId+"'",e);
         } finally{
-            try{
-                cramResponse.body().close();
-            }catch (Exception e){
-                LOG.error("Couldn't close cram response body",e);
+            if (cramBody != null){
+                try{
+                    cramBody.close();
+                }catch (Exception e){
+                    LOG.error("Couldn't close cram response body",e);
+                }
             }
         }
         return rapUrl;
@@ -161,10 +161,9 @@ public class SymbIoTeCoreIntegration {
     }
 
     public Uri getCramUrl(String sensorId) {
-        Uri coreCram = Uri.parse(mCoreAamUrl).buildUpon()
+        return Uri.parse(mCoreAamUrl).buildUpon()
                 .appendEncodedPath(SymbIoTeConstants.PATH_RESOURCE_URL)
                 .appendQueryParameter(SymbIoTeConstants.PARAM_ID, sensorId)
                 .build();
-        return coreCram;
     }
 }

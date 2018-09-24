@@ -48,6 +48,11 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * This is the one reacting on the task when the actual sensor is being read via SymbIoTe core
+     * and platform specific requests.
+     * To exemplify, we pop up alert boxes to show the result.
+     */
     private SymbIoTeSensorReadingTask.SensorReaderCallback mSymbIoTeReaderCallback = new SymbIoTeSensorReadingTask.SensorReaderCallback() {
 
         @Override
@@ -106,6 +111,10 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * enable/disable the list of available sensors to give a visual cue
+     * @param enable false to disable the list
+     */
     private void enableSensorListView(boolean enable) {
         mListView.setEnabled(enable);
         if (enable){
@@ -127,9 +136,6 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement

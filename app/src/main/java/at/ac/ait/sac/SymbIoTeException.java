@@ -5,7 +5,7 @@ package at.ac.ait.sac;
  * Created by EdeggerK on 07.02.2018.   ¯\_(ツ)_/¯
  */
 
-public class SymbIoTeException extends Exception {
+class SymbIoTeException extends Exception {
 
     public SymbIoTeException() {
     }

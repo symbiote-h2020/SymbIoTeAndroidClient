@@ -2,7 +2,6 @@ package at.ac.ait.sac.settings;
 
 import android.content.Context;
 import android.preference.PreferenceManager;
-import android.view.View;
 
 import at.ac.ait.sac.SymbIoTeConstants;
 
