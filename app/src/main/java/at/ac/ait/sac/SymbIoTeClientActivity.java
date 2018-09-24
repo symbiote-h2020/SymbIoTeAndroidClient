@@ -34,7 +34,7 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
 
     private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(SymbIoTeClientActivity.class);
 
-    private SymbIoTeCoreSensorQueryTask.QueryTaskCallback mSymbIoTeQueryCallback = new SymbIoTeCoreSensorQueryTask.QueryTaskCallback() {
+    private final SymbIoTeCoreSensorQueryTask.QueryTaskCallback mSymbIoTeQueryCallback = new SymbIoTeCoreSensorQueryTask.QueryTaskCallback() {
         @Override
         public void onSearchComplete(Collection<Sensor> sensors) {
             LOG.debug("onSearchComplete: found {} sensors",sensors.size());
@@ -53,7 +53,7 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
      * and platform specific requests.
      * To exemplify, we pop up alert boxes to show the result.
      */
-    private SymbIoTeSensorReadingTask.SensorReaderCallback mSymbIoTeReaderCallback = new SymbIoTeSensorReadingTask.SensorReaderCallback() {
+    private final SymbIoTeSensorReadingTask.SensorReaderCallback mSymbIoTeReaderCallback = new SymbIoTeSensorReadingTask.SensorReaderCallback() {
 
         @Override
         public void onSuccess(String responseBody) {
@@ -72,7 +72,7 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
 
 
     private SymbIoTeCoreSensorQueryTask mCoreQueryTask;
-    private List<Sensor> mSensors = new ArrayList<>();
+    private final List<Sensor> mSensors = new ArrayList<>();
     private ArrayAdapter<Sensor> mAdapter;
     private ListView mListView;
 

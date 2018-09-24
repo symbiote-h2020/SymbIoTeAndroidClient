@@ -14,7 +14,7 @@ import java.util.Collection;
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Created by EdeggerK on 13.07.2018.   ¯\_(ツ)_/¯
  */
-public class Sensor {
+class Sensor {
 
     private static final Logger LOG = LoggerFactory.getLogger(Sensor.class);
 

@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Objects;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
