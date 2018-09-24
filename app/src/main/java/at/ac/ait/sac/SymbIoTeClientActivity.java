@@ -22,7 +22,12 @@ import at.ac.ait.sac.settings.Settings;
 import at.ac.ait.sac.settings.SettingsActivity;
 
 /**
+ * This is the main class to interact w/ SymbIoTe. It features to trigger the SymbIoTe core
+ * registry search and querying a specific sensor retrieved previously.
  *
+ * Which core you are asking? Please specify the desired symbIoTe core URL in the preferences
+ * accessible in the action bar of the app. By default we are using
+ * 'https://symbiote-open.man.poznan.pl/coreInterface'
  */
 public class SymbIoTeClientActivity extends AppCompatActivity {
 
