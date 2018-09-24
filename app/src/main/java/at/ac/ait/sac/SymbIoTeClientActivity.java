@@ -2,6 +2,7 @@ package at.ac.ait.sac;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -53,12 +54,14 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
         public void onSuccess(String responseBody) {
             LOG.debug("onSuccess: Response from sensor: {} ",responseBody);
             new AlertDialog.Builder(SymbIoTeClientActivity.this).setMessage(responseBody).show();
+            enableSensorListView(true);
         }
 
         @Override
         public void onError(Exception e) {
             LOG.error("onError: ",e);
             new AlertDialog.Builder(SymbIoTeClientActivity.this).setMessage(e.getMessage()).setTitle("Error").setIcon(android.R.drawable.ic_dialog_alert).show();
+            enableSensorListView(true);
         }
     };
 
@@ -66,16 +69,17 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
     private SymbIoTeCoreSensorQueryTask mCoreQueryTask;
     private List<Sensor> mSensors = new ArrayList<>();
     private ArrayAdapter<Sensor> mAdapter;
+    private ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symb_io_te_client);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        ListView listView = findViewById(R.id.listView);
+        mListView = findViewById(R.id.listView);
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, mSensors);
-        listView.setAdapter(mAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setAdapter(mAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Sensor clicked = (Sensor) adapterView.getAdapter().getItem(i);
@@ -83,6 +87,8 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
                 Snackbar.make(view, getString(R.string.snack_reader_started), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 new SymbIoTeSensorReadingTask(SymbIoTeClientActivity.this, mSymbIoTeReaderCallback).execute(clicked.id);
+                //don't allow multiple clicks on the list ...
+                enableSensorListView(false);
             }
         });
 
@@ -98,6 +104,18 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
                 mCoreQueryTask.execute(Settings.getPlatformId(SymbIoTeClientActivity.this));
             }
         });
+    }
+
+    private void enableSensorListView(boolean enable) {
+        mListView.setEnabled(enable);
+        if (enable){
+            mListView.setAlpha(0f);
+            mListView.setBackgroundColor(Color.WHITE);
+        }else{
+            mListView.setAlpha(0.75f);
+            mListView.setBackgroundColor(Color.GRAY);
+
+        }
     }
 
     @Override

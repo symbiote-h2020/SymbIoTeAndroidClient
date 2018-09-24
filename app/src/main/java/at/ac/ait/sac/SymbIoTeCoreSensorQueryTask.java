@@ -21,8 +21,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- *
- * Performs symbiote core searches
+ * Task performing symbiote core searches. You can provide a platform ID when executing the task
+ * and you will get a list of registered sensors.
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Created by EdeggerK on 06.02.2018.   ¯\_(ツ)_/¯
  */
