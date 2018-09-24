@@ -21,6 +21,9 @@ import java.util.List;
 import at.ac.ait.sac.settings.Settings;
 import at.ac.ait.sac.settings.SettingsActivity;
 
+/**
+ *
+ */
 public class SymbIoTeClientActivity extends AppCompatActivity {
 
     private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(SymbIoTeClientActivity.class);
@@ -63,7 +66,7 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symb_io_te_client);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         ListView listView = findViewById(R.id.listView);
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, mSensors);
         listView.setAdapter(mAdapter);
@@ -80,7 +83,7 @@ public class SymbIoTeClientActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
