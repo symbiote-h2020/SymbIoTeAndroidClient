@@ -65,7 +65,7 @@ class SymbIoTeCoreSensorQueryTask extends AsyncTask<String, Void, Collection<Sen
                 body = queryResponse.body();
                 LOG.debug("Body: "+body);
                 if (body != null){
-                    JSONObject jBody = new JSONObject(body.toString());
+                    JSONObject jBody = new JSONObject(body.string());
                     boolean isVerified = symbiote.isResponseVerified(jBody,
                             SymbIoTeConstants.SERVICE_SEARCH, SymbIoTeConstants.SERVICE_CORE_AAM);
                     if (!isVerified){
