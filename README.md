@@ -11,7 +11,7 @@ It is mainly intented to be a starting point for your own SymbIoTe development d
 
 * **[SymbIoTeSensorReadingTask](https://git-service.ait.ac.at/sim-symbiote/SymbIoTe-Android-Client/blob/master/app/src/main/java/at/ac/ait/sac/SymbIoTeSensorReadingTask.java)** - A background task to retrieve the actual sensor data from the target platform via SymbIoTe 
 
-For a complete description of all the components, please check the [JavaDocs](https://github.com/symbiote-h2020/SymbIoTeAndroidClient/blob/master/javadoc/index.html).
+For a complete description of all the components, please check the [JavaDocs](https://htmlpreview.github.com/?https://github.com/symbiote-h2020/SymbIoTeAndroidClient/blob/master/javadoc/index.html).
 
 ## SymbIoTe dependency
 
