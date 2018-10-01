@@ -15,7 +15,7 @@ For a complete description of all the components, please check the [JavaDocs](ht
 
 ## SymbIoTe dependency
 
-To use SymbIoTe in your own project just add the following dependency to your app level [build.gradle](https://git-service.ait.ac.at/sim-symbiote/SymbIoTe-Android-Client/blob/master/app/build.gradle):
+To use SymbIoTe in your own project just add the following dependency to your app level [build.gradle](https://github.com/symbiote-h2020/SymbIoTeAndroidClient/blob/master/app/build.gradle):
 
 ```json
     //SymbIoTe security client
