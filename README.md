@@ -5,11 +5,11 @@ An Android client examplifying some basic SymbIoTe integration workflows like se
 It is mainly intented to be a starting point for your own SymbIoTe development doing more exciting stuff. I may help you by introducing some simple use cases accessing the basic SymbIoTe core infrastructure and your own platform dependent components.
 
 ## Components
-* **[SymbIoTeClientActivity](https://git-service.ait.ac.at/sim-symbiote/SymbIoTe-Android-Client/blob/master/app/src/main/java/at/ac/ait/sac/SymbIoTeClientActivity.java)** - The main entry point for this demo
+* **[SymbIoTeClientActivity](https://github.com/symbiote-h2020/SymbIoTeAndroidClient/blob/master/app/src/main/java/at/ac/ait/sac/SymbIoTeClientActivity.java)** - The main entry point for this demo
 
-* **[SymbIoTeCoreSensorQueryTask](https://git-service.ait.ac.at/sim-symbiote/SymbIoTe-Android-Client/blob/master/app/src/main/java/at/ac/ait/sac/SymbIoTeCoreSensorQueryTask.java)** - A background task to query the SymbIoTe core for registered sensors from various platforms
+* **[SymbIoTeCoreSensorQueryTask](https://github.com/symbiote-h2020/SymbIoTeAndroidClient/blob/master/app/src/main/java/at/ac/ait/sac/SymbIoTeCoreSensorQueryTask.java)** - A background task to query the SymbIoTe core for registered sensors from various platforms
 
-* **[SymbIoTeSensorReadingTask](https://git-service.ait.ac.at/sim-symbiote/SymbIoTe-Android-Client/blob/master/app/src/main/java/at/ac/ait/sac/SymbIoTeSensorReadingTask.java)** - A background task to retrieve the actual sensor data from the target platform via SymbIoTe 
+* **[SymbIoTeSensorReadingTask](https://github.com/symbiote-h2020/SymbIoTeAndroidClient/blob/master/app/src/main/java/at/ac/ait/sac/SymbIoTeSensorReadingTask.java)** - A background task to retrieve the actual sensor data from the target platform via SymbIoTe
 
 For a complete description of all the components, please check the [JavaDocs](https://htmlpreview.github.com/?https://github.com/symbiote-h2020/SymbIoTeAndroidClient/blob/master/javadoc/index.html).
 
