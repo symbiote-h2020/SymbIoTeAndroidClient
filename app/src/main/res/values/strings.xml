@@ -9,4 +9,8 @@
     <string name="p_core_aam_summary">We are using SymbIoTe core \'%s\'</string>
     <string name="p_platform_id_title">Platform ID</string>
     <string name="p_platform_id_summary">We are using \'%s\' as our platform id when searching for sensors</string>
+    <!--
+    <string name="p_platform_id_default">ait_kiola</string>
+    -->
+    <string name="p_platform_id_default">AITopenUwedat</string>
 </resources>

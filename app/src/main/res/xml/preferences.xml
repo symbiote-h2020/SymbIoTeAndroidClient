@@ -11,7 +11,7 @@
             android:title="@string/p_core_aam_title"/>
         <EditTextPreference
             android:persistent="true"
-            android:defaultValue="ait_kiola"
+            android:defaultValue="@string/p_platform_id_default"
             android:inputType="textNoSuggestions"
             android:key="P_PLATFORM_ID"
             android:selectAllOnFocus="true"
