@@ -27,3 +27,13 @@ To use SymbIoTe in your own project just add the following dependency to your ap
     //SymbIoTe security client
     implementation 'com.github.symbiote-h2020:SymbIoTeSecurity4Android:25.6.0'
 ```
+
+and allow the dependency download via jitpack:
+
+```json
+    repositories{
+        google()
+        //for SymbIoTe clients
+        maven { url 'https://jitpack.io' }
+    }
+```

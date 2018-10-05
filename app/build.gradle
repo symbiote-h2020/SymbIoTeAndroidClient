@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //SymbIoTe security client
-    implementation 'com.github.symbiote-h2020:SymbIoTeSecurity4Android:25.6.0'
+    implementation 'com.github.symbiote-h2020:SymbIoTeSecurity4Android:27.2.0'
     //logging
     implementation 'org.slf4j:slf4j-api:1.7.25'
     implementation('com.github.tony19:logback-android-classic:1.1.1-6') {
