@@ -7,6 +7,8 @@ After the query to the core lists you one or more matching sensors you can resol
 
 It is mainly intented to be a starting point for your own SymbIoTe development doing more exciting stuff. I may help you by introducing some simple use cases accessing the basic SymbIoTe core infrastructure and your own platform dependent components.
 
+The desired SymbIote core instance (open, prod, dev,...) and the target platform can be set via the apps preferences in the main menu.
+
 ## Components
 
 These components are the cornerstones of the L1 workflwo described above and provide JavaDoc to guide you through the implementation:

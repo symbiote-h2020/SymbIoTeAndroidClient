@@ -30,6 +30,21 @@ import at.ac.ait.sac.settings.SettingsActivity;
  * Which core you are asking? Please specify the desired symbIoTe core URL in the preferences
  * accessible in the action bar of the app. By default we are using
  * 'https://symbiote-open.man.poznan.pl/coreInterface'
+ *
+ * Some platform ids and their names on symbiote-open:
+ *
+ * smart-stadium-dev		Smart Stadium
+ * xplatform				X_Platform
+ * AITopenUwedat			AITopenUwedat
+ * smeur					SMEUR
+ * NXW-symphony-1			NXW-symphony-1
+ * mobaas3					MoBaaS3
+ * fer1					    OpenIoT
+ * ait_kiola				ait_kiola
+ * PLATFORM_1528795401120	Sensinov
+ * NavigoDigitale			NavigoDigitale
+ * educampus				EduCampus IOSB
+ * oh-fer					OpenHAB-FER
  */
 public class SymbIoTeClientActivity extends AppCompatActivity {
 
