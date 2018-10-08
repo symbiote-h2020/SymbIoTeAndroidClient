@@ -44,8 +44,18 @@ and allow the dependency download via jitpack:
 
 ### List sensors for platforms
 
+The list of available sensors (registered at the core) after a successful query for a given platformId.
+
 ![Sensor List](./screenshots/01_SAC_SensorList.jpg)
 
 ### Sensor response
 
+After a successful response from the target platform the JSON will be displayed as a popup.
+
 ![Sensor response](./screenshots/02_SAC_Response.jpg)
+
+### Application preferences
+
+To set the platformId to query the symbIoTe core for, simply adjust the respective values in the apps preference activity.
+
+![Sensor response](./screenshots/03_SAC_Preferences.jpg)
