@@ -13,7 +13,7 @@ The desired SymbIote core instance (open, prod, dev,...) and the target platform
 
 These components are the cornerstones of the L1 workflwo described above and provide JavaDoc to guide you through the implementation:
 
-* **[SymbIoTeClientActivity](https://github.com/symbiote-h2020/SymbIoTeAndroidClient/blob/master/app/src/main/java/at/ac/ait/sac/SymbIoTeClientActivity.java)** - The main entry point for this demo
+* **[SymbIoTeClientActivity](./app/src/main/java/at/ac/ait/sac/SymbIoTeClientActivity.java)** - The main entry point for this demo
 
 * **[SymbIoTeCoreSensorQueryTask](https://github.com/symbiote-h2020/SymbIoTeAndroidClient/blob/master/app/src/main/java/at/ac/ait/sac/SymbIoTeCoreSensorQueryTask.java)** - A background task to query the SymbIoTe core for registered sensors from various platforms
 
