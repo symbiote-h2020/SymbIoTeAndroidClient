@@ -11,6 +11,7 @@
     <string name="p_platform_id_summary">We are using \'%s\' as our platform id when searching for sensors</string>
     <!--
     <string name="p_platform_id_default">ait_kiola</string>
-    -->
     <string name="p_platform_id_default">AITopenUwedat</string>
+    -->
+    <string name="p_platform_id_default">fer1</string>
 </resources>
