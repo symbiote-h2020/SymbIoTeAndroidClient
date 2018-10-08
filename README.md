@@ -3,7 +3,7 @@
 An Android client examplifying some basic SymbIoTe L1 integration workflows like [searching for certain sensors](https://github.com/symbiote-h2020/SymbioteCloud/wiki/3.2-Search-for-resources) on specific platforms and retrieving the respective data.
 To retrieve the data from a specific sensor from a specific platform, you will need some information about the sensor like what kind of data it provides (e.g. temperature, CO2 concentration,..) and optionally some information about the platform on which the sensor is hosted (e.g. the platform's name or id) to narrow the query to the core. For more information about the search please check out [SymbIote search](https://github.com/symbiote-h2020/SymbioteCloud/wiki/3.2-Search-for-resources).
 
-After the query to the core lists you one or more matching sensors you can resolve the actual access URL and query the sensor on the platform directly. For more detail on how to access the sensor data please review [SymbIote security](https://github.com/symbiote-h2020/SymbIoTeSecurity)
+After the query to the core lists you one or more matching sensors you can resolve the actual access URL and query the sensor on the platform directly. For more detail on how to access the sensor data please review [SymbIote security](https://github.com/symbiote-h2020/SymbIoTeSecurity).
 
 It is mainly intented to be a starting point for your own SymbIoTe development doing more exciting stuff. I may help you by introducing some simple use cases accessing the basic SymbIoTe core infrastructure and your own platform dependent components.
 
@@ -39,3 +39,13 @@ and allow the dependency download via jitpack:
         maven { url 'https://jitpack.io' }
     }
 ```
+
+## Screenshots
+
+### List sensors for platforms
+
+![Sensor List](./screenshots/01_SAC_SensorList.jpg)
+
+### Sensor response
+
+![Sensor response](./screenshots/02_SAC_Response.jpg)
